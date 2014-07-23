@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jq.mobi dev : The definitive HTML5 mobile javascript framework" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jq.mobi dev</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sync101/jQ.Mobi">View on GitHub</a>
+
+          <h1 id="project_title">Jq.mobi dev</h1>
+          <h2 id="project_tagline">The definitive HTML5 mobile javascript framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sync101/jQ.Mobi/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sync101/jQ.Mobi/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="jqmobi---a-html5-targeted-javascript-framework" class="anchor" href="#jqmobi---a-html5-targeted-javascript-framework"><span class="octicon octicon-link"></span></a>jqMobi - a HTML5 targeted Javascript Framework</h1>
+
+<p>jqMobi is a Javascript framework targeted at HTML5 browsers with a blazingly fast query selector library that supports W3C queries.  </p>
+
+<p>It is comprised of three parts.</p>
+
+<p>1) jqMobi  - query selector library</p>
+
+<p>2) jqUi - UI/UX library for mobile applications in a webkit browser.  Please see the Kitchen Sink folder for a demo</p>
+
+<p>3) jqPlugins - plugins for mobile applications in a webkit browser.</p>
+
+<h1>
+<a name="about-jqmobi" class="anchor" href="#about-jqmobi"><span class="octicon octicon-link"></span></a>About jqMobi</h1>
+
+<p>We started talking to our development community and asked them what they wanted.  The key features were</p>
+
+<ol>
+<li><p>Fast performance</p></li>
+<li><p>Small code base</p></li>
+<li><p>Only needs to support a small subset of commands</p></li>
+</ol><p>Rather then try to improve another library, we found it easier to build one from the ground up, but recognizing the groundwork other frameworks laid out.  By doing this, we were able to identify simple ways to increase speed performance.  Our tests repeatedly showed we were 2x or more faster at single operation commands. </p>
+
+<p>All the libraries performed similar when operations were performed on a group of elements.</p>
+
+<h1>
+<a name="using-jqmobi" class="anchor" href="#using-jqmobi"><span class="octicon octicon-link"></span></a>Using jqMobi</h1>
+
+<p>To use jqMobi, include the script in your html file.  You can use the pre-built minified version.</p>
+
+<div class="highlight highlight-js"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"jq.mobi.min.js"</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+<p>This will then create two objects that you can work with.  It will NOT override a pre-existing $ object.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#main"</span><span class="p">)</span>
+<span class="nx">jq</span><span class="p">(</span><span class="s2">"#main"</span><span class="p">)</span>
+</pre></div>
+
+<h1>
+<a name="query-selector" class="anchor" href="#query-selector"><span class="octicon octicon-link"></span></a>Query Selector</h1>
+
+<p>W3C spec'ed queries are supported.  What this means is you can do the following</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"input[type='text']"</span><span class="p">)</span>
+</pre></div>
+
+<p>You can NOT do the following, as it's not supported by the browsers.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"input:text"</span><span class="p">)</span>
+</pre></div>
+
+<p>In some functions, an additional selector can be used.  This can be a string, array, or a jqMobi object.  We currently do not support functions</p>
+
+<h1>
+<a name="syntax" class="anchor" href="#syntax"><span class="octicon octicon-link"></span></a>Syntax:</h1>
+
+<p>Basic call</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#id"</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+</pre></div>
+
+<p>You can specify a Dom element, selector, list of nodes, or HTML string. </p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"span"</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"clicked"</span><span class="p">);});</span> <span class="c1">// -&gt; find all span elements and attach a click event</span>
+</pre></div>
+
+<p>You can pass in an HTML string and it will create the object for you.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">myDiv</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;div id='foo'&gt;"</span><span class="p">)</span> <span class="c1">//Creates a div object and returns it</span>
+</pre></div>
+
+<h1>
+<a name="jqmobi-api-functions---please-see-httpapijqmobicom-for-all-functions" class="anchor" href="#jqmobi-api-functions---please-see-httpapijqmobicom-for-all-functions"><span class="octicon octicon-link"></span></a>jqMobi API functions - Please see <a href="http://api.jqmobi.com">http://api.jqmobi.com</a> for all functions</h1>
+
+<h1>
+<a name="jqmobi-ajax-calls" class="anchor" href="#jqmobi-ajax-calls"><span class="octicon octicon-link"></span></a>jqMobi Ajax calls</h1>
+
+<div class="highlight highlight-js"><pre>
+<span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">callback</span><span class="p">)</span> <span class="c1">//Makes an Ajax request to the URL and executes the callback funtion with the result</span>
+<span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="nx">callback</span><span class="p">,</span><span class="nx">dataType</span><span class="p">)</span> <span class="c1">//Makes an Ajax POST request to the URL with the data and executes the callback with the result.  An optional dataType can be passed in, as some webservices require the header</span>
+<span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="nx">callback</span><span class="p">)</span> <span class="c1">//Makes an ajax request with the data and executes callback function passing in a JSON object from the Ajax response into the callback function.</span>
+</pre></div>
+
+<p>If you need more access, you can use the following.</p>
+
+<div class="highlight highlight-js"><pre><span class="p">.</span><span class="nx">ajax</span> <span class="p">{</span>
+   <span class="nx">type</span><span class="o">:</span><span class="s1">'POST'</span><span class="p">,</span> <span class="c1">//defaults to GET</span>
+   <span class="nx">url</span><span class="o">:</span><span class="s1">'/api/getinfo'</span><span class="p">,</span> <span class="c1">//defaults to window.location</span>
+   <span class="nx">contentType</span><span class="o">:</span><span class="s1">'application/json'</span><span class="p">,</span> <span class="c1">//defaults to application/x-www-form-urlencoded</span>
+   <span class="nx">headers</span><span class="o">:</span><span class="p">{},</span>
+   <span class="nx">dataType</span><span class="o">:</span><span class="s1">'application/json'</span><span class="p">,</span> <span class="c1">//defaults to text/html</span>
+   <span class="nx">data</span><span class="o">:</span><span class="p">{</span><span class="nx">username</span><span class="o">:</span><span class="nx">foo</span><span class="p">},</span> <span class="c1">//Can be a Key/Value pair string or object.  If it's an object, $.serialize is called to turn it into a Key/Value pair string</span>
+   <span class="nx">success</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){},</span> <span class="c1">//function to call on successful Ajax request</span>
+   <span class="nx">error</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){},</span> <span class="c1">//function to call when an error exists in the Ajax request</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>If the url contains the pattern =? in it, a jsonP request will be made.  These can ONLY be GET requests</p>
+
+<h1>
+<a name="jqmobi-helper-calls" class="anchor" href="#jqmobi-helper-calls"><span class="octicon octicon-link"></span></a>jqMobi Helper calls</h1>
+
+<div class="highlight highlight-js"><pre><span class="p">.</span><span class="nx">param</span><span class="p">()</span> <span class="c1">//Serialize a JSON object into KVP for a querystring</span>
+<span class="p">.</span><span class="nx">parseJSON</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="c1">//Backwards compatability JSON parsing call.  Uses the browsers native JSON parser</span>
+<span class="p">.</span><span class="nx">parseXML</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="c1">//Parses a string and returns a XML document version</span>
+</pre></div>
+
+<h1>
+<a name="jqmobi-os-detectors" class="anchor" href="#jqmobi-os-detectors"><span class="octicon octicon-link"></span></a>jqMobi OS detectors</h1>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">webkit</span>     <span class="c1">//True if webkit found in the user agent</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">android</span>    <span class="c1">//True if anroid useragent</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">ipad</span>       <span class="c1">//True if iPad useragent</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">iphone</span>     <span class="c1">//True if iPhone user agent</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">webos</span>      <span class="c1">//True if WebOS detected</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">touchpad</span>   <span class="c1">//True if WebOS and Touchpad user agent</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">ios</span>        <span class="c1">//True if iPad or iPhone</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">os</span><span class="p">.</span><span class="nx">blackberry</span> <span class="c1">//True if Blackberry PlayBook or OS &gt;=6</span>
+</pre></div>
+
+<h1>
+<a name="plugins" class="anchor" href="#plugins"><span class="octicon octicon-link"></span></a>Plugins</h1>
+
+<p>jqMobi is built with the extendability to add plugins.  To create a plugin, you will most likely extend the $.fn object by passing a reference of the main jqMobi object</p>
+
+<div class="highlight highlight-js"><pre>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">[</span><span class="s1">'foo'</span><span class="p">]</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="nx">alert</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})(</span><span class="nx">jq</span><span class="p">);</span>
+
+</pre></div>
+
+<h1>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute</h1>
+
+<p>You can contribute to the core code by forking it and make a pull request.  Please keep in mind we do not want to add functionality that is a one-off case.  These are best dealt with via plugins.</p>
+
+<h1>
+<a name="bugs" class="anchor" href="#bugs"><span class="octicon octicon-link"></span></a>Bugs</h1>
+
+<p>Please go to <a href="http://www.jqmobi.com">http://www.jqmobi.com</a> and report any bugs with the following</p>
+
+<ol>
+<li><p>Any error messages from the console</p></li>
+<li><p>Line numbers of offending code</p></li>
+<li><p>Test cases</p></li>
+<li><p>Description of the Error</p></li>
+<li><p>Expected result</p></li>
+<li><p>Browser/Device you are testing on</p></li>
+</ol><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>jqMobi is is licensed under the terms of the MIT License, see the included license.txt file.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jq.mobi dev maintained by <a href="https://github.com/sync101">sync101</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
